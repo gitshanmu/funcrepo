@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import pagefactory.homepage;
 import pagefactory.rentpage;
-
+//changes
 public class NewTest3 {
 	WebDriver driver;
 	WebDriverWait wait;
