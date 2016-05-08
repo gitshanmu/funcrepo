@@ -1,6 +1,9 @@
 package uitests;
 
 import org.testng.annotations.Test;
+
+
+
 import org.testng.annotations.DataProvider;
 
 import java.util.List;
@@ -10,19 +13,29 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.Platform;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class NewTest {
 	WebDriver driver;
 	WebDriverWait wait;
 
 	@BeforeClass
-	public void Setup() {
+	public void Setup() throws MalformedURLException {
 
-		driver = new ChromeDriver();
+		//driver = new ChromeDriver();
+		DesiredCapabilities caps = DesiredCapabilities.firefox();
+		caps.setBrowserName("firefox");
+		caps.setPlatform(Platform.WINDOWS);		
+		driver = new RemoteWebDriver(new URL("http://localhost:9090/wd/hub"),caps);
 		wait = new WebDriverWait(driver, 3);
 
 	}
